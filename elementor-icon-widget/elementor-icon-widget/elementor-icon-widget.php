@@ -7,7 +7,7 @@
  * Text Domain: elementor-custom-widgets
  *
  * Requires Plugins: elementor
- * Elementor tested up to: 3.21.0
+ * Elementor tested up to: 3.23.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
