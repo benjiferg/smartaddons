@@ -24,7 +24,7 @@ These widgets are categorized under "Ecwid + Widgets" in Elementor, making them 
 == Installation ==
 This section describes how to install the plugin and get it working.
 
-1. Upload the plugin files to the `/wp-content/plugins/` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload [plugin-name](link-to-github.zip) to the /wp-content/plugins/ directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Ensure that both Elementor and Ecwid plugins are installed and active.
 
