@@ -51,7 +51,7 @@ No, this plugin works with the free version of Elementor. However, you may need 
 
 = v1.0.0 =
 * Initial release of Custom Widgets with the following features:
-  - Icon Widget
+  - Home Widget
   - Shopping Cart Widget
   - Search Button Widget
   - Account Widget
