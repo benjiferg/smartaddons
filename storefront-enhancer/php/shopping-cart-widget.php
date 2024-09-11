@@ -10,7 +10,7 @@ class Elementor_Shopping_Cart_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_title() {
-        return esc_html__( 'Shopping Cart', 'elementor-custom-widgets' );
+        return esc_html__( 'Shopping Cart', 'storefront-enhancer' );
     }
 
     public function get_icon() {
@@ -21,13 +21,11 @@ class Elementor_Shopping_Cart_Widget extends \Elementor\Widget_Base {
         return [ 'custom-widgets-category' ]; // Assign to the custom category
     }
 
-
-
     protected function register_controls() {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__( 'Content', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Content', 'storefront-enhancer' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -35,7 +33,7 @@ class Elementor_Shopping_Cart_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'background_color',
             [
-                'label' => esc_html__( 'Background Color', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Background Color', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f3864', // Default background color
             ]
@@ -44,7 +42,7 @@ class Elementor_Shopping_Cart_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label' => esc_html__( 'Icon Color', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Icon Color', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#FFFFFF', // Default icon color
             ]
@@ -53,21 +51,20 @@ class Elementor_Shopping_Cart_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tooltip_text',
             [
-                'label' => esc_html__( 'Tooltip Text', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Tooltip Text', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__( 'Cart', 'elementor-icon-widget' ),
+                'default' => esc_html__( 'Cart', 'storefront-enhancer' ),
             ]
         );
 
         $this->add_control(
             'fallback_url',
             [
-                'label' => esc_html__( 'Fallback URL', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Fallback URL', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__( 'https://nursewellness.com/store/category-name', 'elementor-icon-widget' ),
-                'show_external' => false,
+                'placeholder' => esc_html__( ' ', 'storefront-enhancer' ),
                 'default' => [
-                    'url' => 'https://nursewellness.com/store/category-name',
+                    'url' => ' ',
                     'is_external' => false,
                     'nofollow' => false,
                 ],
@@ -78,10 +75,10 @@ class Elementor_Shopping_Cart_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'enable_tooltip',
             [
-                'label' => esc_html__( 'Enable Tooltip', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Enable Tooltip', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__( 'Yes', 'elementor-icon-widget' ),
-                'label_off' => esc_html__( 'No', 'elementor-icon-widget' ),
+                'label_on' => esc_html__( 'Yes', 'storefront-enhancer' ),
+                'label_off' => esc_html__( 'No', 'storefront-enhancer' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -100,13 +97,13 @@ class Elementor_Shopping_Cart_Widget extends \Elementor\Widget_Base {
         // Determine if the tooltip should be displayed
         $tooltip_class = $settings['enable_tooltip'] === 'yes' ? 'albert-tooltip' : '';
 
-        // Fallback URL
-        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : 'https://nursewellness.com/store/category-name';
+        // Fallback URL with escaping
+        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : esc_url(' ');
 
         ?>
 
-        <button class="<?php echo esc_attr($tooltip_class); ?> albert-button" style="<?php echo $button_style; ?>">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" height="35" width="35" id="cart" style="<?php echo $icon_style; ?>">
+        <button class="<?php echo esc_attr($tooltip_class); ?> albert-button" style="<?php echo esc_attr($button_style); ?>">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" height="35" width="35" id="cart" style="<?php echo esc_attr($icon_style); ?>">
                 <!-- SVG path data for the cart icon -->
                 <path d="M27.47,23.93H14.92A5.09,5.09,0,0,1,10,20L8,11.87a5.11,5.11,0,0,1,5-6.32h16.5a5.11,5.11,0,0,1,5,6.32l-2,8.15A5.1,5.1,0,0,1,27.47,23.93ZM12.94,8.05a2.62,2.62,0,0,0-2.54,3.23l2,8.15a2.6,2.6,0,0,0,2.54,2H27.47a2.6,2.6,0,0,0,2.54-2l2-8.15a2.61,2.61,0,0,0-2.54-3.23Z"></path>
                 <path d="M9.46 14a1.25 1.25 0 0 1-1.21-1L6.46 5.23A3.21 3.21 0 0 0 3.32 2.75H1.69a1.25 1.25 0 0 1 0-2.5H3.32A5.71 5.71 0 0 1 8.9 4.66l1.78 7.77a1.24 1.24 0 0 1-.93 1.5A1.43 1.43 0 0 1 9.46 14zM15.11 34.75a4 4 0 1 1 4-4A4 4 0 0 1 15.11 34.75zm0-5.54a1.52 1.52 0 1 0 1.52 1.52A1.52 1.52 0 0 0 15.11 29.21zM28.93 34.75a4 4 0 1 1 4-4A4 4 0 0 1 28.93 34.75zm0-5.54a1.52 1.52 0 1 0 1.53 1.52A1.52 1.52 0 0 0 28.93 29.21z"></path>
@@ -206,7 +203,7 @@ class Elementor_Shopping_Cart_Widget extends \Elementor\Widget_Base {
                         Ecwid.openPage('cart');
                     } else {
                         // Fallback to the user-defined URL if Ecwid is not loaded
-                        window.location.href = '<?php echo $fallback_url; ?>';
+                        window.location.href = '<?php echo esc_url($fallback_url); ?>';
                     }
                 });
 
