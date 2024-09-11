@@ -10,11 +10,11 @@ class Elementor_Icon_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_title() {
-        return esc_html__( 'Custom Icon', 'storefront-enhancer' );
+        return esc_html__( 'Ecwid Home Button', 'storefront-enhancer' );
     }
 
     public function get_icon() {
-        return 'eicon-star';
+        return 'eicon-button';
     }
 
     public function get_categories() {
