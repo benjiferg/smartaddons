@@ -10,7 +10,7 @@ class Elementor_Search_Button_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_title() {
-        return esc_html__( 'Search Button', 'elementor-custom-widgets' );
+        return esc_html__( 'Search Button', 'storefront-enhancer' );
     }
 
     public function get_icon() {
@@ -21,13 +21,11 @@ class Elementor_Search_Button_Widget extends \Elementor\Widget_Base {
         return [ 'custom-widgets-category' ]; // Assign to the custom category
     }
 
-
-
     protected function register_controls() {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__( 'Content', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Content', 'storefront-enhancer' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -35,7 +33,7 @@ class Elementor_Search_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'background_color',
             [
-                'label' => esc_html__( 'Background Color', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Background Color', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f3864', // Default background color
             ]
@@ -44,7 +42,7 @@ class Elementor_Search_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label' => esc_html__( 'Icon Color', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Icon Color', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#FFFFFF', // Default icon color
             ]
@@ -53,18 +51,18 @@ class Elementor_Search_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tooltip_text',
             [
-                'label' => esc_html__( 'Tooltip Text', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Tooltip Text', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__( 'Search', 'elementor-icon-widget' ),
+                'default' => esc_html__( 'Search', 'storefront-enhancer' ),
             ]
         );
 
         $this->add_control(
             'fallback_url',
             [
-                'label' => esc_html__( 'Fallback URL', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Fallback URL', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__( 'https://nursewellness.com/store/category-name', 'elementor-icon-widget' ),
+                'placeholder' => esc_html__( 'https://nursewellness.com/store/category-name', 'storefront-enhancer' ),
                 'show_external' => false,
                 'default' => [
                     'url' => 'https://nursewellness.com/store/category-name',
@@ -78,10 +76,10 @@ class Elementor_Search_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'enable_tooltip',
             [
-                'label' => esc_html__( 'Enable Tooltip', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Enable Tooltip', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__( 'Yes', 'elementor-icon-widget' ),
-                'label_off' => esc_html__( 'No', 'elementor-icon-widget' ),
+                'label_on' => esc_html__( 'Yes', 'storefront-enhancer' ),
+                'label_off' => esc_html__( 'No', 'storefront-enhancer' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -101,12 +99,12 @@ class Elementor_Search_Button_Widget extends \Elementor\Widget_Base {
         $tooltip_class = $settings['enable_tooltip'] === 'yes' ? 'dell-tooltip' : '';
 
         // Fallback URL
-        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : 'https://nursewellness.com/store/category-name';
+        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : esc_url( 'https://nursewellness.com/store/category-name' );
 
         ?>
 
-        <button class="<?php echo esc_attr($tooltip_class); ?> dell-button" style="<?php echo $button_style; ?>">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="30" width="30" style="<?php echo $icon_style; ?>">
+        <button class="<?php echo esc_attr($tooltip_class); ?> dell-button" style="<?php echo esc_attr($button_style); ?>">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="30" width="30" style="<?php echo esc_attr($icon_style); ?>">
                 <!-- SVG path data for the search icon -->
                 <path d="M23.384 21.619l-5.754-5.754a9.395 9.395 0 002.177-5.992A9.45 9.45 0 0010.358.432a9.45 9.45 0 00-9.45 9.45 9.45 9.45 0 009.45 9.45 9.394 9.394 0 005.992-2.177l5.754 5.754a.807.807 0 001.142 0 .807.807 0 000-1.142zM10.358 17.345a7.464 7.464 0 01-7.463-7.463 7.464 7.464 0 017.463-7.463 7.464 7.464 0 017.463 7.463 7.464 7.464 0 01-7.463 7.463z"></path>
             </svg>
@@ -184,7 +182,7 @@ class Elementor_Search_Button_Widget extends \Elementor\Widget_Base {
                         Ecwid.openPage('search');
                     } else {
                         // Fallback to the user-defined URL if Ecwid is not loaded
-                        window.location.href = '<?php echo $fallback_url; ?>';
+                        window.location.href = '<?php echo esc_url($fallback_url); ?>';
                     }
                 });
             });
