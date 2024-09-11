@@ -10,11 +10,11 @@ class Elementor_Account_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_title() {
-        return esc_html__( 'Account Button', 'storefront-enhancer' );
+        return esc_html__( 'Ecwid Account Button', 'storefront-enhancer' );
     }
 
     public function get_icon() {
-        return 'eicon-user';
+        return 'eicon-button';
     }
 
     public function get_categories() {
