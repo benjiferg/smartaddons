@@ -4,7 +4,7 @@
  * Description: A set of custom widgets for Elementor that interacts with ecwid api to provide a home, search, cart, and account buttons.
  * Version: 1.0.0
  * Author: Benjamin Ferguson
- * Text Domain: elementor-custom-widgets
+ * Text Domain: storefront-enhancer
  *
  * Requires Plugins: elementor
  * Elementor tested up to: 3.23.3
