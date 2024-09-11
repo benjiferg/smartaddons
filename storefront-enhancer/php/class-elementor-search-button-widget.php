@@ -62,10 +62,10 @@ class Elementor_Search_Button_Widget extends \Elementor\Widget_Base {
             [
                 'label' => esc_html__( 'Fallback URL', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__( 'https://nursewellness.com/store/category-name', 'storefront-enhancer' ),
+                'placeholder' => esc_html__( ' ', 'storefront-enhancer' ),
                 'show_external' => false,
                 'default' => [
-                    'url' => 'https://nursewellness.com/store/category-name',
+                    'url' => ' ',
                     'is_external' => false,
                     'nofollow' => false,
                 ],
@@ -99,7 +99,7 @@ class Elementor_Search_Button_Widget extends \Elementor\Widget_Base {
         $tooltip_class = $settings['enable_tooltip'] === 'yes' ? 'dell-tooltip' : '';
 
         // Fallback URL
-        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : esc_url( 'https://nursewellness.com/store/category-name' );
+        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : esc_url( ' ' );
 
         ?>
 
