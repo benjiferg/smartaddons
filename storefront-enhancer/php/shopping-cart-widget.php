@@ -10,7 +10,7 @@ class Elementor_Shopping_Cart_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_title() {
-        return esc_html__( 'Shopping Cart', 'storefront-enhancer' );
+        return esc_html__( 'Ecwid Shopping Cart', 'storefront-enhancer' );
     }
 
     public function get_icon() {
