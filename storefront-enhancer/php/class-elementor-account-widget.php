@@ -64,7 +64,7 @@ class Elementor_Account_Widget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => esc_html__( ' ', 'storefront-enhancer' ),
                 'default' => [
-                    'url' => 'https://nursewellnedev.wpenginepowered.com/store/category-name',
+                    'url' => ' ',
                     'is_external' => false,
                     'nofollow' => false,
                 ],
@@ -95,7 +95,7 @@ class Elementor_Account_Widget extends \Elementor\Widget_Base {
         $icon_style = sprintf('fill: %s;', esc_attr( $settings['icon_color'] ));
         $tooltip_class = $settings['enable_tooltip'] === 'yes' ? 'vegetable-tooltip' : '';
 
-        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : esc_url( 'https://nursewellnedev.wpenginepowered.com/store/category-name' );
+        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : esc_url( ' ' );
 
         ?>
         <button class="<?php echo esc_attr($tooltip_class); ?> vegetable-button" style="<?php echo esc_attr($button_style); ?>">
