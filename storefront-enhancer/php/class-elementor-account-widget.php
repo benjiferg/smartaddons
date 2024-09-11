@@ -10,7 +10,7 @@ class Elementor_Account_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_title() {
-        return esc_html__( 'Account Button', 'elementor-custom-widgets' );
+        return esc_html__( 'Account Button', 'storefront-enhancer' );
     }
 
     public function get_icon() {
@@ -25,7 +25,7 @@ class Elementor_Account_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__( 'Content', 'elementor-custom-widgets' ),
+                'label' => esc_html__( 'Content', 'storefront-enhancer' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -33,7 +33,7 @@ class Elementor_Account_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'background_color',
             [
-                'label' => esc_html__( 'Background Color', 'elementor-custom-widgets' ),
+                'label' => esc_html__( 'Background Color', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f3864',
             ]
@@ -42,7 +42,7 @@ class Elementor_Account_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label' => esc_html__( 'Icon Color', 'elementor-custom-widgets' ),
+                'label' => esc_html__( 'Icon Color', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#FFFFFF',
             ]
@@ -51,18 +51,18 @@ class Elementor_Account_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tooltip_text',
             [
-                'label' => esc_html__( 'Tooltip Text', 'elementor-custom-widgets' ),
+                'label' => esc_html__( 'Tooltip Text', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__( 'Account', 'elementor-custom-widgets' ),
+                'default' => esc_html__( 'Account', 'storefront-enhancer' ),
             ]
         );
 
         $this->add_control(
             'fallback_url',
             [
-                'label' => esc_html__( 'Fallback URL', 'elementor-custom-widgets' ),
+                'label' => esc_html__( 'Fallback URL', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__( 'https://nursewellnedev.wpenginepowered.com/store/category-name', 'elementor-custom-widgets' ),
+                'placeholder' => esc_html__( ' ', 'storefront-enhancer' ),
                 'default' => [
                     'url' => 'https://nursewellnedev.wpenginepowered.com/store/category-name',
                     'is_external' => false,
@@ -75,10 +75,10 @@ class Elementor_Account_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'enable_tooltip',
             [
-                'label' => esc_html__( 'Enable Tooltip', 'elementor-custom-widgets' ),
+                'label' => esc_html__( 'Enable Tooltip', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__( 'Yes', 'elementor-custom-widgets' ),
-                'label_off' => esc_html__( 'No', 'elementor-custom-widgets' ),
+                'label_on' => esc_html__( 'Yes', 'storefront-enhancer' ),
+                'label_off' => esc_html__( 'No', 'storefront-enhancer' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -90,15 +90,16 @@ class Elementor_Account_Widget extends \Elementor\Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
 
+        // Escape output
         $button_style = sprintf('background-color: %s;', esc_attr( $settings['background_color'] ));
         $icon_style = sprintf('fill: %s;', esc_attr( $settings['icon_color'] ));
         $tooltip_class = $settings['enable_tooltip'] === 'yes' ? 'vegetable-tooltip' : '';
 
-        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : 'https://nursewellnedev.wpenginepowered.com/store/category-name';
+        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : esc_url( 'https://nursewellnedev.wpenginepowered.com/store/category-name' );
 
         ?>
-        <button class="<?php echo esc_attr($tooltip_class); ?> vegetable-button" style="<?php echo $button_style; ?>">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" height="40" width="40" style="<?php echo $icon_style; ?>">
+        <button class="<?php echo esc_attr($tooltip_class); ?> vegetable-button" style="<?php echo esc_attr($button_style); ?>">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" height="40" width="40" style="<?php echo esc_attr($icon_style); ?>">
                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
             </svg>
             <?php if ( 'yes' === $settings['enable_tooltip'] ) : ?>
@@ -173,7 +174,7 @@ class Elementor_Account_Widget extends \Elementor\Widget_Base {
                     if (window.Ecwid) {
                         Ecwid.openPage('account');
                     } else {
-                        window.location.href = '<?php echo $fallback_url; ?>';
+                        window.location.href = '<?php echo esc_url($fallback_url); ?>';
                     }
                 });
             });
