@@ -10,11 +10,11 @@ class Elementor_Search_Button_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_title() {
-        return esc_html__( 'Search Button', 'storefront-enhancer' );
+        return esc_html__( 'Ecwid Search Button', 'storefront-enhancer' );
     }
 
     public function get_icon() {
-        return 'eicon-search';
+        return 'eicon-button';
     }
 
     public function get_categories() {
