@@ -24,7 +24,7 @@ These widgets are categorized under "Ecwid + Widgets" in Elementor, making them 
 == Installation ==
 This section describes how to install the plugin and get it working.
 
-1. Upload [Storefron Enhancer](https://github.com/benjiferg/smartaddons/archive/refs/heads/main.zip) to the /wp-content/plugins/ directory.
+1. Upload [Storefront Enhancer](https://github.com/benjiferg/smartaddons/archive/refs/heads/main.zip) to the /wp-content/plugins/ directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Ensure that both Elementor and Ecwid plugins are installed and active.
 
@@ -46,6 +46,8 @@ No, this plugin works with the free version of Elementor. However, you may need 
 3. **Mobile view** - A preview of the custom widgets in action on a mobile device.
 4. ![image](https://github.com/user-attachments/assets/4fe7d29b-4ad9-4fec-819e-cc5eb85bb1d2)
 
+== Live Test ==
+https://nursewellnedev.wpenginepowered.com/shop-tester/
 
 == Changelog ==
 
