@@ -10,7 +10,7 @@ class Elementor_Icon_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_title() {
-        return esc_html__( 'Custom Icon', 'elementor-custom-widgets' );
+        return esc_html__( 'Custom Icon', 'storefront-enhancer' );
     }
 
     public function get_icon() {
@@ -23,13 +23,11 @@ class Elementor_Icon_Widget extends \Elementor\Widget_Base {
 
     // Rest of the widget code...
 
-
-
     protected function register_controls() {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__( 'Content', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Content', 'storefront-enhancer' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -37,7 +35,7 @@ class Elementor_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'background_color',
             [
-                'label' => esc_html__( 'Background Color', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Background Color', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f3864', // Default background color
             ]
@@ -46,7 +44,7 @@ class Elementor_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label' => esc_html__( 'Icon Color', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Icon Color', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#FFFFFF', // Default icon color
             ]
@@ -55,21 +53,21 @@ class Elementor_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tooltip_text',
             [
-                'label' => esc_html__( 'Tooltip Text', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Tooltip Text', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__( 'Tooltip', 'elementor-icon-widget' ),
+                'default' => esc_html__( 'Tooltip', 'storefront-enhancer' ),
             ]
         );
 
         $this->add_control(
             'fallback_url',
             [
-                'label' => esc_html__( 'Fallback URL', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Fallback URL', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__( 'https://nursewellness.com/store/category-name', 'elementor-icon-widget' ),
+                'placeholder' => esc_html__( ' ', 'storefront-enhancer' ),
                 'show_external' => false,
                 'default' => [
-                    'url' => 'https://nursewellness.com/store/category-name',
+                    'url' => ' ',
                     'is_external' => false,
                     'nofollow' => false,
                 ],
@@ -80,10 +78,10 @@ class Elementor_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'enable_tooltip',
             [
-                'label' => esc_html__( 'Enable Tooltip', 'elementor-icon-widget' ),
+                'label' => esc_html__( 'Enable Tooltip', 'storefront-enhancer' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__( 'Yes', 'elementor-icon-widget' ),
-                'label_off' => esc_html__( 'No', 'elementor-icon-widget' ),
+                'label_on' => esc_html__( 'Yes', 'storefront-enhancer' ),
+                'label_off' => esc_html__( 'No', 'storefront-enhancer' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -103,12 +101,12 @@ class Elementor_Icon_Widget extends \Elementor\Widget_Base {
         $tooltip_class = $settings['enable_tooltip'] === 'yes' ? 'owen-tooltip' : '';
 
         // Fallback URL
-        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : 'https://nursewellness.com/store/category-name';
+        $fallback_url = !empty($settings['fallback_url']['url']) ? esc_url( $settings['fallback_url']['url'] ) : esc_url( ' ' );
 
         ?>
 
-        <button class="<?php echo esc_attr($tooltip_class); ?> owen-button" style="<?php echo $button_style; ?>">
-            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" id="home" style="<?php echo $icon_style; ?>">
+        <button class="<?php echo esc_attr($tooltip_class); ?> owen-button" style="<?php echo esc_attr($button_style); ?>">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" id="home" style="<?php echo esc_attr($icon_style); ?>">
                 <path d="M6.64373233,18.7821107 L6.64373233,15.7152449 C6.64371685,14.9380902 7.27567036,14.3067075 8.05843544,14.3018198 L10.9326107,14.3018198 C11.7188748,14.3018198 12.3562677,14.9346318 12.3562677,15.7152449 L12.3562677,15.7152449 L12.3562677,18.7732212 C12.3562498,19.4472781 12.9040221,19.995083 13.5829406,20 L15.5438266,20 C16.4596364,20.0023291 17.3387522,19.6427941 17.9871692,19.0007051 C18.6355861,18.3586161 19,17.4867541 19,16.5775231 L19,7.86584638 C19,7.13138763 18.6720694,6.43471253 18.1046183,5.96350064 L11.4429783,0.674268354 C10.2785132,-0.250877524 8.61537279,-0.22099178 7.48539114,0.745384082 C7.48539114,0.745384082 0.967012253,5.96350064 0.967012253,5.96350064 C0.37274068,6.42082162 0.0175522924,7.11956262 0,7.86584638 L0,16.5686336 C0,18.463707 1.54738155,20 3.45617342,20 L5.37229029,20 C5.69917279,20.0023364 6.01348703,19.8750734 6.24547302,19.6464237 C6.477459,19.417774 6.60792577,19.1066525 6.60791706,18.7821107 L6.64373233,18.7821107 Z" transform="translate(2.5 2)"></path>
             </svg>
             <?php if ( 'yes' === $settings['enable_tooltip'] ) : ?>
@@ -187,7 +185,7 @@ class Elementor_Icon_Widget extends \Elementor\Widget_Base {
                         Ecwid.openPage('category');
                     } else {
                         // Fallback to the user-defined URL if Ecwid is not loaded
-                        window.location.href = '<?php echo $fallback_url; ?>';
+                        window.location.href = '<?php echo esc_url($fallback_url); ?>';
                     }
                 });
             });
